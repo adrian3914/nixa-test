@@ -1,0 +1,7 @@
+<hr>
+<h3 class="text-muted">All objects in database</h3>
+<app-table
+  [objList$]="allObjs$"
+  (onDeleteEvent) = "onDelete($event)"
+></app-table>
+

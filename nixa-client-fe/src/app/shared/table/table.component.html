@@ -1,0 +1,34 @@
+<div *ngIf="objList$ | async as objList">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">First Name
+        <app-sort-list [sortBy]="'firstName'" (sortByEvent)="onSort($event)"></app-sort-list>
+      </th>
+      <th scope="col">Last Name
+        <app-sort-list [sortBy]="'lastName'" (sortByEvent)="onSort($event)"></app-sort-list>
+      </th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">Contact Date</th>
+      <th scope="col">Delete</th>
+      <th scope="col">Update</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let obj of objList">
+      <td>{{ obj.id }}</td>
+      <td>{{ obj.firstName }}</td>
+      <td>{{ obj.lastName }}</td>
+      <td>{{ obj.phoneNumber }}</td>
+      <td>{{ obj.contactDate }}</td>
+      <td>
+        <button class="btn btn-sm btn-danger" (click)="onDelete(obj.id)">Delete</button>
+      </td>
+      <td>
+        <button class="btn btn-sm btn-primary" routerLink="/update/{{obj.id}}">Update</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
